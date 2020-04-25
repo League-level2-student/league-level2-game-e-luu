@@ -3,6 +3,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JPanel;
 
 public class gamepanel extends JPanel implements ActionListener {
@@ -12,7 +14,6 @@ public class gamepanel extends JPanel implements ActionListener {
 	int currentState = MENU;
 	Font titleFont;
 	Font Subtext;
-
 
 	void Font() {
 		titleFont = new Font("Arial", Font.PLAIN, 48);
@@ -78,6 +79,14 @@ public class gamepanel extends JPanel implements ActionListener {
 			updateGameState();
 		} else if (currentState == END) {
 			updateEndState();
+		}
+
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if (currentState == END) {
+				currentState = MENU;
+			} else {
+				currentState++;
+			}
 		}
 
 	}
