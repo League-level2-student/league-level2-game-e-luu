@@ -20,6 +20,7 @@ public class gamerunner {
 
 	void setup() {
 		frame.add(panel);
+		frame.addKeyListener(panel);
 		frame.setPreferredSize(new Dimension(width, height));
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

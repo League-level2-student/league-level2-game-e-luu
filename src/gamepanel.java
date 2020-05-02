@@ -4,10 +4,11 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
-public class gamepanel extends JPanel implements ActionListener {
+public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	final int MENU = 0;
 	final int GAME = 1;
 	final int END = 2;
@@ -38,7 +39,7 @@ public class gamepanel extends JPanel implements ActionListener {
 
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, 500, 800);
+		g.fillRect(0, 0, 500, 750);
 		g.setFont(titleFont);
 		g.setColor(Color.WHITE);
 		g.drawString("Flappy Bird", 95, 150);
@@ -49,12 +50,12 @@ public class gamepanel extends JPanel implements ActionListener {
 
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 500, 800);
+		g.fillRect(0, 0, 500, 750);
 	}
 
 	void drawEndState(Graphics g) {
 		g.setColor(Color.RED);
-		g.fillRect(0, 0, 500, 800);
+		g.fillRect(0, 0, 500, 750);
 	}
 
 	@Override
@@ -80,7 +81,18 @@ public class gamepanel extends JPanel implements ActionListener {
 		} else if (currentState == END) {
 			updateEndState();
 		}
+	}
 
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("key typed");
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("key pressed");
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (currentState == END) {
 				currentState = MENU;
@@ -88,6 +100,15 @@ public class gamepanel extends JPanel implements ActionListener {
 				currentState++;
 			}
 		}
-
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			System.out.println("SPACE");
+		}
 	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("key released");
+	}
+
 }
