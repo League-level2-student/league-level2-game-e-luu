@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	final int MENU = 0;
@@ -15,14 +16,22 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	int currentState = MENU;
 	Font titleFont;
 	Font Subtext;
+	Font scorekeeper;
+	Font ending;
+	Timer frameDraw;
 
 	void Font() {
 		titleFont = new Font("Arial", Font.PLAIN, 48);
 		Subtext = new Font("Arial", Font.PLAIN, 30);
+		scorekeeper = new Font ("Arial", Font.PLAIN, 20);
+		ending = new Font("Arial", Font.PLAIN, 48);
+		
 	}
 
 	gamepanel() {
 		Font();
+		frameDraw = new Timer(1000/60, this);
+		frameDraw.start();
 	}
 
 	void updateMenuState() {
@@ -39,7 +48,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, 500, 750);
+		g.fillRect(0, 0, gamerunner.width, gamerunner.height);
 		g.setFont(titleFont);
 		g.setColor(Color.WHITE);
 		g.drawString("Flappy Bird", 95, 150);
@@ -51,16 +60,23 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 500, 750);
+		g.setFont(scorekeeper);
+		g.setColor(Color.WHITE);
+		g.drawString("score:", 10, 20);
 	}
 
 	void drawEndState(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillRect(0, 0, 500, 750);
+		g.setFont(ending);
+		g.setColor(Color.WHITE);
+		g.drawString("you died", 125, 200);
+	
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-		g.fillRect(10, 10, 100, 100);
+	
 		if (currentState == MENU) {
 			drawMenuState(g);
 		} else if (currentState == GAME) {
@@ -75,12 +91,12 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if (currentState == MENU) {
 			updateMenuState();
-			System.out.println("action");
 		} else if (currentState == GAME) {
 			updateGameState();
 		} else if (currentState == END) {
 			updateEndState();
 		}
+		repaint();
 	}
 
 	@Override
