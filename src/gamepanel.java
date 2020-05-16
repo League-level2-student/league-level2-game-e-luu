@@ -19,7 +19,8 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	Font scorekeeper;
 	Font ending;
 	Timer frameDraw;
-
+	bird flappybird = new bird(250,375,50,50);
+	
 	void Font() {
 		titleFont = new Font("Arial", Font.PLAIN, 48);
 		Subtext = new Font("Arial", Font.PLAIN, 30);
@@ -63,6 +64,8 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(scorekeeper);
 		g.setColor(Color.WHITE);
 		g.drawString("score:", 10, 20);
+		g.drawRect(250, 375, 10, 10);
+	
 	}
 
 	void drawEndState(Graphics g) {

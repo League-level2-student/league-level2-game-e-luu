@@ -31,8 +31,8 @@ public class gameobject {
 		}
 	}
 
-	void draw(Graphics graphics) {
-		graphics.fillRect(x, y, 100, 100);
+	void draw(Graphics g) {
+		g.fillRect(x, y, 100, 100);
 	}
 }
 
