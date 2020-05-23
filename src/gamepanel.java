@@ -40,7 +40,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-
+	flappybird.fall();
 	}
 
 	void updateEndState() {
@@ -64,7 +64,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(scorekeeper);
 		g.setColor(Color.WHITE);
 		g.drawString("score:", 10, 20);
-		g.drawRect(250, 375, 10, 10);
+		flappybird.draw(g);
 	
 	}
 
@@ -121,6 +121,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			System.out.println("SPACE");
+			flappybird.space();
 		}
 	}
 
