@@ -20,6 +20,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	Font ending;
 	Timer frameDraw;
 	bird flappybird = new bird(250,375,50,50);
+	objectmanager manager = new objectmanager(flappybird);
 	
 	void Font() {
 		titleFont = new Font("Arial", Font.PLAIN, 48);
@@ -41,6 +42,8 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 
 	void updateGameState() {
 	flappybird.fall();
+	manager.update();
+	//manager.draw(g);
 	}
 
 	void updateEndState() {
@@ -64,7 +67,8 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(scorekeeper);
 		g.setColor(Color.WHITE);
 		g.drawString("score:", 10, 20);
-		flappybird.draw(g);
+		//flappybird.draw(g);
+		manager.draw(g);
 	
 	}
 
