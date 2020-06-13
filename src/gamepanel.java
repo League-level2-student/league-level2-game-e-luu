@@ -67,7 +67,6 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(scorekeeper);
 		g.setColor(Color.WHITE);
 		g.drawString("score:", 10, 20);
-		//flappybird.draw(g);
 		manager.draw(g);
 	
 	}
