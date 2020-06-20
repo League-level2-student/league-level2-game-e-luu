@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -21,7 +23,10 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	Timer frameDraw;
 	bird flappybird = new bird(250,375,50,50);
 	objectmanager manager = new objectmanager(flappybird);
-	
+	public static BufferedImage image;
+	public static boolean needImage = true;
+	public static boolean gotImage = false;	
+
 	void Font() {
 		titleFont = new Font("Arial", Font.PLAIN, 48);
 		Subtext = new Font("Arial", Font.PLAIN, 30);
@@ -34,6 +39,9 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		Font();
 		frameDraw = new Timer(1000/60, this);
 		frameDraw.start();
+		if (needImage) {
+		    loadImage ("background.jpg");
+		}
 	}
 
 	void updateMenuState() {
@@ -62,10 +70,14 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void drawGameState(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 500, 750);
+		if (gotImage) {
+			g.drawImage(image, 0, 0, gamepanel.WIDTH, gamepanel.HEIGHT, null);
+		} else {
+			g.setColor(Color.BLUE);
+			g.fillRect(0, 0, gamepanel.WIDTH, gamepanel.HEIGHT);
+		}
 		g.setFont(scorekeeper);
-		g.setColor(Color.WHITE);
+		//g.setColor(Color.WHITE);
 		g.drawString("score:", 10, 20);
 		manager.draw(g);
 	
@@ -132,6 +144,17 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("key released");
+	}
+	void loadImage(String imageFile) {
+	    if (needImage) {
+	        try {
+	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		    gotImage = true;
+	        } catch (Exception e) {
+	            
+	        }
+	        needImage = false;
+	    }
 	}
 
 }
