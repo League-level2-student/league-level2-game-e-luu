@@ -6,7 +6,7 @@ public class gamerunner {
 	JFrame frame;
 	gamepanel panel;
 	public static final int width = 500;
-	public static final int height = 750;
+	public static final int height = 887;
 
 	gamerunner() {
 		frame = new JFrame();

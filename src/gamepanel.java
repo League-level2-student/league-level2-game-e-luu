@@ -65,27 +65,29 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.WHITE);
 		g.drawString("Flappy Bird", 95, 150);
 		g.setFont(Subtext);
-		g.setColor(Color.WHITE);
 		g.drawString("click enter to start", 120, 300);
 	}
 
 	void drawGameState(Graphics g) {
+
+		System.out.println(gotImage);
 		if (gotImage) {
-			g.drawImage(image, 0, 0, gamepanel.WIDTH, gamepanel.HEIGHT, null);
+			g.drawImage(image, 0, 0, gamerunner.width, gamerunner.height, null);
 		} else {
 			g.setColor(Color.BLUE);
-			g.fillRect(0, 0, gamepanel.WIDTH, gamepanel.HEIGHT);
+			g.fillRect(0, 0, gamerunner.width, gamerunner.height);
 		}
 		g.setFont(scorekeeper);
 		//g.setColor(Color.WHITE);
 		g.drawString("score:", 10, 20);
 		manager.draw(g);
+		
 	
 	}
 
 	void drawEndState(Graphics g) {
 		g.setColor(Color.RED);
-		g.fillRect(0, 0, 500, 750);
+		g.fillRect(0, 0, 640, 980);
 		g.setFont(ending);
 		g.setColor(Color.WHITE);
 		g.drawString("you died", 125, 200);
