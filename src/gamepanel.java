@@ -21,11 +21,13 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	Font scorekeeper;
 	Font ending;
 	Timer frameDraw;
+	Timer pipespawn;
 	bird flappybird = new bird(250,375,50,50);
 	objectmanager manager = new objectmanager(flappybird);
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
+	
 
 	void Font() {
 		titleFont = new Font("Arial", Font.PLAIN, 48);
@@ -140,6 +142,9 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 			System.out.println("SPACE");
 			flappybird.space();
 		}
+		if (currentState == GAME) {
+			startgame();
+		} 
 	}
 
 	@Override
@@ -157,6 +162,10 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	        }
 	        needImage = false;
 	    }
+	}
+	void startgame() {
+		 pipespawn = new Timer(3000 , manager);
+		    pipespawn.start();
 	}
 
 }

@@ -17,13 +17,12 @@ public class pipes extends gameobject {
 	}
 
 	void update() {
-		x = (x -= speed);
+		x -= speed;
 	}
 
 	void draw(Graphics g) {
 		g.setColor(Color.GREEN);
-		g.fillRect(500, 750, width, new Random().nextInt(675) + 50);
-		g.fillRect(500, 0, width, new Random().nextInt(675) + 50);
+		g.fillRect(x, 200, 30, new Random().nextInt(675) + 50);
 	}
 
 	void loadImage(String imageFile) {

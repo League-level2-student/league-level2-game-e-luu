@@ -1,16 +1,21 @@
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
-public class objectmanager {
+
+public class objectmanager implements ActionListener{
 	bird flappybird;
 	ArrayList<pipes> pipes = new ArrayList<pipes>();
+	Random ran = new Random();
 
 	public objectmanager(bird flappybird) {
 		this.flappybird = flappybird;
 	}
 
-	void addpipe(pipes pipe) {
-
+	void addpipe() {
+		pipes.add(new pipes(ran.nextInt(gamerunner.width),0,50,50));
 	}
 
 	void update() {
@@ -36,5 +41,11 @@ public class objectmanager {
 				pipes.remove(i);
 			}
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		addpipe();
 	}
 }
