@@ -18,7 +18,6 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	int currentState = MENU;
 	Font titleFont;
 	Font Subtext;
-	Font scorekeeper;
 	Font ending;
 	Timer frameDraw;
 	Timer pipespawn;
@@ -32,7 +31,6 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	void Font() {
 		titleFont = new Font("Arial", Font.PLAIN, 48);
 		Subtext = new Font("Arial", Font.PLAIN, 30);
-		scorekeeper = new Font ("Arial", Font.PLAIN, 20);
 		ending = new Font("Arial", Font.PLAIN, 48);
 		
 	}
@@ -54,6 +52,9 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	flappybird.fall();
 	manager.update();
 	//manager.draw(g);
+	if (manager.state == true) {
+		currentState = END;
+	}
 	}
 
 	void updateEndState() {
@@ -79,9 +80,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 			g.setColor(Color.BLUE);
 			g.fillRect(0, 0, gamerunner.width, gamerunner.height);
 		}
-		g.setFont(scorekeeper);
-		//g.setColor(Color.WHITE);
-		g.drawString("score:", 10, 20);
+
 		manager.draw(g);
 		
 	
@@ -124,13 +123,13 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("key typed");
+		
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("key pressed");
+		
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (currentState == END) {
 				currentState = MENU;
@@ -139,7 +138,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-			System.out.println("SPACE");
+		
 			flappybird.space();
 		}
 		if (currentState == GAME) {
@@ -150,7 +149,7 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("key released");
+
 	}
 	void loadImage(String imageFile) {
 	    if (needImage) {

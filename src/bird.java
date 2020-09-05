@@ -29,7 +29,7 @@ public class bird extends gameobject {
 
 	public void space() {
 		if (y >= 0) {
-			y -= 175;
+			y -= 100;
 		}
 	}
 
