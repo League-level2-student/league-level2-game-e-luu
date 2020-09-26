@@ -133,6 +133,9 @@ public class gamepanel extends JPanel implements ActionListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (currentState == END) {
 				currentState = MENU;
+				manager.state = false;
+				flappybird = new bird(250,375,50,50);
+				manager = new objectmanager(flappybird);
 			} else {
 				currentState++;
 			}

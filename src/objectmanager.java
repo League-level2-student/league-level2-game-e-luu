@@ -27,7 +27,7 @@ public class objectmanager implements ActionListener {
 
 	void update() {
 		pipe.update();
-		if (flappybird.x > pipe.x && flappybird.x < pipe.x + pipe.height ) {
+		if (flappybird.y > pipe.y && flappybird.y < pipe.y + pipe.height && flappybird.x == pipe.x ) {
 			state = true;
 		}
 		// for (int i = 0; i < pipes.size(); i++) {
